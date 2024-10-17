@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login12</title>
+</head>
+
+<body>
+
+<h2>Login Page</h2>
+
+<form action="#" th:action="@{signIn}" method="post">
+  <label>Email</label>
+  <input type="email" required="required" name="emailid"><br />
+  <br />
+  <label>Password</label>
+  <input type="password" required="required" name="emailpassword"><br />
+  <br />
+  <input type="submit" value="SignIn" />
+  <input type="reset" value="Reset" />
+  <br /><br />
+  <span th:text="${msgSignInError}" style="color:red"></span>
+</form>
+<br />
+<br />
+<form action="#" th:action="@{signUp}" method="post">
+  <label>Email</label>
+  <input type="email" required="required" name="emailid"><br />
+  <br />
+  <label>Password</label>
+  <input type="password" required="required" name="emailpassword"><br />
+  <br />
+  <input type="submit" value="SignUp" />
+  <input type="reset" value="Reset" />
+  <br /><br />
+  <span th:text="${msgSignUpError}" style="color:red"></span>
+  <span th:text="${msgSignUpSuccess}" style="color:green"></span>
+</form>
+
+</body>
+
+</html>
