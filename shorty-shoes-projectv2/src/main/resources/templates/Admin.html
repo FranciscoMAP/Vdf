@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>Admin page</h2>
+</body>
+
+
+<div>
+      <form action="#" th:action="@{/updateAdminPassword}" method="post">
+      <label>Update Password</label><br/>
+      <input type="password" required="required" name="emailpassword" /><br/><br/>
+      <input type="submit" value="Update"/>
+      <br/><br/>
+      <br/><br/>
+      <span th:text="${msgPasswordUpdateError}" style="color:red"></span>
+      <span th:text="${msgPasswordUpdateSucess}" style="color:green"></span>
+    </form>
+  </div>
+
+
+<div>
+        <form action="#" th:action="@{/addProduct}" method="post" th:object="${product_mgmt}">
+          <input type="number" th:field="*{pid}" hidden />
+          <label>Type</label><br>
+          <input type="text" th:field="*{ptype}" /><br/>
+          <br/>
+          <label>Brand</label><br>
+          <input type="text" th:field="*{pbrand}" /><br/>
+          <br/>
+          <label>Model</label><br>
+          <input type="text" th:field="*{pmodel}" /><br/>
+          <br/>
+          <label>Price</label><br>
+          <input type="number" step="0.01" th:field="*{pprice}"/> <br/>
+          <br/>
+          <label>Image URL</label><br>
+          <input type="text" th:field="*{pimage}"/> <br/>
+          <br/>
+          <label>Quantity</label><br>
+          <input type="text" th:field="*{pquantity}"/> <br/>
+          <br/>
+          <input type="submit" th:value="${buttonText}" name="selectionButton"/>
+          <br/><br/>
+          <span th:text="${msgProductMgmtError}" style="color:red"></span>
+          <span th:text="${msgProductMgmtSuccess}" style="color:green"></span>
+        </form>
+      </div>
+      
+<table border="1">
+	<tr>
+		<th>Type</th>
+		<th>Brand</th>
+		<th>Model</th>
+		<th>Price</th>
+		<th>Image URL</th>
+		<th>Quantity</th>
+	</tr>
+	<tr th:each="p:${products}">
+		<td th:text="${p.ptype}"></td>
+		<td th:text="${p.pbrand}"></td>
+		<td th:text="${p.pmodel}"></td>
+		<td th:text="${p.pprice}"></td>
+		<td><img th:src="${p.pimage}" "width=75 height=75"></img></td>
+		<td th:text="${p.pquantity}"></td>
+		<td><a th:href="@{/deleteProduct(pid=${p.pid})}">Delete</a></td>
+		<td><a th:href="@{/updateProductInfo(pid=${p.pid})}">Update</a></td>
+	</tr>
+</table>
+
+   </html>
+
+      
